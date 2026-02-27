@@ -690,3 +690,64 @@ footer {
     margin-top: 0.3rem;
     opacity: 0.5;
 }
+
+/* ===== MEJORAS DEL CARRITO ===== */
+.modal-contenido {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    max-height: 800px;
+}
+
+.modal-header {
+    flex-shrink: 0;
+}
+
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.modal-footer {
+    flex-shrink: 0;
+    border-top: 2px solid var(--borgoña);
+    background-color: var(--negro-suave);
+    padding: 1.5rem;
+}
+
+.footer-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-vaciar {
+    background: none;
+    border: 2px solid var(--error);
+    color: var(--error);
+    padding: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-vaciar:hover {
+    background-color: var(--error);
+    color: var(--marfil);
+}
+
+.btn-pedido {
+    flex: 2;
+}
+
+.resumen-carrito {
+    background-color: var(--negro);
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
