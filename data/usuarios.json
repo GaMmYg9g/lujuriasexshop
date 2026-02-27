@@ -1,0 +1,13 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Ana García",
+      "telefono": "612345678",
+      "email": "ana@email.com",
+      "fechaRegistro": "2026-02-01T10:00:00.000Z",
+      "totalCompras": 3,
+      "totalGastado": 425.47
+    }
+  ]
+}
