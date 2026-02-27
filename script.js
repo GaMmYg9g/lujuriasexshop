@@ -35,11 +35,12 @@ const categoriasBtns = document.querySelectorAll('.categoria');
 let filtroCategoria = 'todos';
 let filtroBusqueda = '';
 
-// Inicializar
+// ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
     actualizarContadorCarrito();
     
+    // Event listeners
     verCarritoBtn.addEventListener('click', abrirCarrito);
     cerrarCarritoBtn.addEventListener('click', cerrarCarritoModal);
     realizarPedidoBtn.addEventListener('click', procesarPedido);
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // Cerrar modales al hacer clic fuera
     window.addEventListener('click', (e) => {
         if (e.target === carritoModal) cerrarCarritoModal();
         if (e.target === registroModal) cerrarModal(registroModal);
@@ -65,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Productos
+// ===== FUNCIONES DE PRODUCTOS =====
 function cargarProductos() {
     const filtrados = filtrarProductosArray();
     renderizarProductos(filtrados);
@@ -106,14 +108,31 @@ function renderizarProductos(array) {
         const estadoClass = disponible ? 'estado-disponible' : 'estado-agotado';
         const estadoTexto = disponible ? 'DISPONIBLE' : 'AGOTADO';
         
+        // Generar especificaciones estilo Telegram
+        const especsHTML = p.especificaciones.map(esp => `
+            <div class="especificacion-item">
+                <span class="especificacion-label">${esp.label}</span>
+                <span class="especificacion-valor">${esp.valor}</span>
+            </div>
+        `).join('');
+        
         return `
             <div class="producto-card">
                 <img src="${p.imagen}" alt="${p.nombre}" class="producto-imagen" onerror="this.src='${IMAGEN_DEFAULT}'">
                 <div class="producto-info">
                     <h3 class="producto-nombre">${p.nombre}</h3>
                     <p class="producto-descripcion">${p.descripcion}</p>
-                    <div class="producto-precio">$${p.precio.toFixed(2)}</div>
+                    
+                    <div class="producto-especificaciones">
+                        ${especsHTML}
+                    </div>
+                    
+                    <div class="producto-precio">
+                        <small>USD</small> $${p.precio}
+                    </div>
+                    
                     <div class="producto-estado ${estadoClass}">${estadoTexto}</div>
+                    
                     ${disponible ? 
                         `<button class="btn-agregar" onclick="agregarAlCarrito(${p.id})">AGREGAR</button>` : 
                         `<button class="btn-agotado" disabled>⛔ AGOTADO</button>`
@@ -124,7 +143,7 @@ function renderizarProductos(array) {
     }).join('');
 }
 
-// Carrito
+// ===== FUNCIONES DEL CARRITO =====
 function agregarAlCarrito(id) {
     const producto = productos.find(p => p.id === id);
     if (!producto || !producto.disponible) return;
@@ -145,6 +164,11 @@ function agregarAlCarrito(id) {
     
     guardarCarrito();
     actualizarContadorCarrito();
+    
+    // Feedback visual
+    const btn = event.target;
+    btn.style.transform = 'scale(0.95)';
+    setTimeout(() => btn.style.transform = 'scale(1)', 200);
 }
 
 function eliminarDelCarrito(id) {
@@ -192,7 +216,7 @@ function calcularTotales() {
     return { subtotal, total: subtotal };
 }
 
-// Modales
+// ===== MODALES =====
 function abrirCarrito() {
     if (carrito.length === 0) {
         carritoItems.innerHTML = '<p style="text-align:center; padding:2rem; color:#888;">Tu carrito está vacío</p>';
@@ -236,7 +260,7 @@ function cerrarModal(modal) {
     }
 }
 
-// Pedido
+// ===== PROCESAR PEDIDO =====
 function procesarPedido() {
     if (carrito.length === 0) {
         alert('Tu carrito está vacío');
@@ -267,10 +291,12 @@ function guardarRegistro(e) {
     enviarPedidoWhatsApp();
 }
 
+// ===== ENVÍO A WHATSAPP (SIMPLE) =====
 function enviarPedidoWhatsApp() {
     const { total } = calcularTotales();
     const numPedido = generarNumeroPedido();
     
+    // Crear mensaje
     let mensaje = `*${TIENDA_NOMBRE} - NUEVO PEDIDO*%0A%0A`;
     mensaje += `*Cliente:* ${usuario.nombre}%0A`;
     mensaje += `*Teléfono:* ${usuario.telefono}%0A`;
@@ -283,12 +309,15 @@ function enviarPedidoWhatsApp() {
     
     mensaje += `%0A*TOTAL: $${total.toFixed(2)}*`;
     
+    // Abrir WhatsApp con el número configurado
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}`, '_blank');
     
+    // Mostrar confirmación al usuario
     numeroPedido.textContent = `#${numPedido}`;
     totalConfirmacion.textContent = `Total: $${total.toFixed(2)}`;
     confirmacionModal.classList.add('active');
     
+    // Vaciar carrito
     carrito = [];
     guardarCarrito();
     actualizarContadorCarrito();
@@ -299,7 +328,7 @@ function generarNumeroPedido() {
     return `LUX-${f.getFullYear()}${String(f.getMonth()+1).padStart(2,'0')}${String(f.getDate()).padStart(2,'0')}-${Math.floor(Math.random()*1000).toString().padStart(3,'0')}`;
 }
 
-// Globales
+// Hacer funciones globales
 window.agregarAlCarrito = agregarAlCarrito;
 window.eliminarDelCarrito = eliminarDelCarrito;
 window.actualizarCantidad = actualizarCantidad;
