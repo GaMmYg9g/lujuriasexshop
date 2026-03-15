@@ -33,7 +33,7 @@ const productosData = {
             control: "Por App",
             fechaAgregado: "2026-03-12",
             oferta: false,
-            descuento: 20,
+            descuento: 0,
             rebaja: 0,
             etiquetaOferta: ""
         },
