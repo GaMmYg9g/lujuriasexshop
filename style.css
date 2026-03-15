@@ -1538,3 +1538,43 @@ footer {
         font-size: 1.2rem;
     }
 }
+
+/* ===== ESTILOS PARA PRECIO CON DESCUENTO/REBAJA ===== */
+.precio-original {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+
+.precio-descuento {
+    color: var(--dorado);
+    font-weight: 700;
+    font-size: 1.4rem;
+    animation: pulse 1.5s infinite; /* Efecto de pálpito */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.descuento-badge {
+    display: inline-block;
+    background: var(--error);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 30px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
