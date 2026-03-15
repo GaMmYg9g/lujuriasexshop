@@ -31,7 +31,7 @@ const productosData = {
             color: "Rosado, Morado",
             control: "Por App",
             fechaAgregado: "2026-03-12",
-            oferta: true,
+            oferta: false,
             descuento: 20,
             etiquetaOferta: ""
         },
@@ -129,9 +129,9 @@ const productosData = {
             disponible: true,
             talla: "Talla Única",
             fechaAgregado: "2026-03-10",
-            oferta: true,
+            oferta: false,
             descuento: 0,
-            etiquetaOferta: "2x1"
+            etiquetaOferta: ""
         },
         {
             nombre: "Dildo Realista Telescópico 3 en 1 (Mando inalámbrico)",
@@ -237,8 +237,8 @@ const productosData = {
             talla: "S, M, L",
             color: "Negro",
             fechaAgregado: "2026-03-10",
-            oferta: true,
-            descuento: 15,
+            oferta: false,
+            descuento: 0,
             etiquetaOferta: ""
         },
         {
@@ -671,7 +671,7 @@ const productosData = {
             nombre: "Doble Dildo",
             precio: 30,
             imagen: "imagen/dobleDildo.jpg",
-            categorias: ["dildo", "doble"],
+            categorias: ["dildos", "doble"],
             disponible: true,
             largo: "29.8 cm",
             grosor: "3.4 cm a 2.2 cm",
@@ -811,7 +811,7 @@ const productosData = {
             nombre: "Kit BDSM de 10 Piezas",
             precio: 45,
             imagen: "imagen/kitBDSM.jpg",
-            categorias: ["accesorios", "ropa", "BDSM", "lencerías"],
+            categorias: ["accesorios", "ropa", "BDSM", "lencería"],
             disponible: true,
             material: "Cuero Sintético",
             color: "Rojo, Negro",
