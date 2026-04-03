@@ -1665,3 +1665,105 @@ footer {
         height: 4rem; /* Antes 1.6rem */
     }
 }
+
+
+/* ===== BANNER DE EVENTOS ===== */
+.evento-banner {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
+  background: linear-gradient(135deg, var(--borgoña), var(--borgoña-claro));
+  border: 1px solid var(--dorado);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  z-index: 3000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  animation: slideDown 0.4s ease;
+}
+
+.evento-banner-contenido {
+  flex: 1;
+  text-align: left;
+}
+
+.evento-banner-titulo {
+  font-weight: bold;
+  color: var(--dorado);
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
+
+.evento-banner-mensaje {
+  font-size: 0.85rem;
+  color: var(--marfil);
+}
+
+.evento-banner-acciones {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.evento-banner-aceptar {
+  background: var(--dorado);
+  color: var(--negro);
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.evento-banner-aceptar:hover {
+  transform: scale(1.02);
+  background: #d4af37;
+}
+
+.evento-banner-cerrar {
+  background: none;
+  border: none;
+  color: var(--marfil);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.evento-banner-cerrar:hover {
+  transform: scale(1.2);
+  color: var(--dorado);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .evento-banner {
+    top: 10px;
+    width: 95%;
+    padding: 0.8rem;
+  }
+  .evento-banner-titulo {
+    font-size: 0.8rem;
+  }
+  .evento-banner-mensaje {
+    font-size: 0.75rem;
+  }
+}
