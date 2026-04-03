@@ -29,6 +29,10 @@ let carrito = JSON.parse(localStorage.getItem('luxuriaCarrito')) || [];
 let usuario = JSON.parse(localStorage.getItem('luxuriaUsuario')) || null;
 let enFlujoCompra = false;
 
+// Variables de eventos
+let descuentoGlobalActivo = 0;
+let eventoInfo = null;
+
 // Elementos DOM
 const productosContainer = document.getElementById('productosContainer');
 const contadorCarrito = document.getElementById('contadorCarrito');
@@ -93,6 +97,58 @@ let filtroCategoria = 'todos';
 let filtroBusqueda = '';
 let ordenActual = null; // 'caro', 'barato', null
 
+// ===== SISTEMA DE EVENTOS (DESDE eventos.js) =====
+function initEventos() {
+    // Verificar si existe el objeto eventos de eventos.js
+    if (typeof eventos !== 'undefined' && eventos.length) {
+        const eventoActivo = getEventoActivo();
+        if (eventoActivo && eventoActivo.tipo === 'descuento_global') {
+            descuentoGlobalActivo = eventoActivo.descuento;
+            eventoInfo = eventoActivo;
+            mostrarBannerEvento(eventoActivo);
+        }
+    }
+}
+
+function getEventoActivo() {
+    if (typeof eventos === 'undefined') return null;
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    for (const ev of eventos) {
+        if (!ev.activo) continue;
+        const inicio = new Date(ev.fechaInicio);
+        const fin = new Date(ev.fechaFin);
+        inicio.setHours(0, 0, 0, 0);
+        fin.setHours(23, 59, 59, 999);
+        if (hoy >= inicio && hoy <= fin) {
+            return ev;
+        }
+    }
+    return null;
+}
+
+function mostrarBannerEvento(ev) {
+    if (document.querySelector('.evento-banner')) return;
+    const banner = document.createElement('div');
+    banner.className = 'evento-banner';
+    banner.innerHTML = `
+        <div class="evento-banner-contenido">
+            <div class="evento-banner-titulo">${ev.titulo}</div>
+            <div class="evento-banner-mensaje">${ev.mensaje}</div>
+        </div>
+        <div class="evento-banner-acciones">
+            <button class="evento-banner-aceptar">ACEPTAR</button>
+            <button class="evento-banner-cerrar">&times;</button>
+        </div>
+    `;
+    document.body.appendChild(banner);
+    const aceptar = banner.querySelector('.evento-banner-aceptar');
+    const cerrar = banner.querySelector('.evento-banner-cerrar');
+    const cerrarBanner = () => banner.remove();
+    aceptar.addEventListener('click', cerrarBanner);
+    cerrar.addEventListener('click', cerrarBanner);
+}
+
 // ===== PROCESAR COLORES Y OFERTAS DE PRODUCTOS =====
 productosData.productos.forEach(p => {
     if (p.color) {
@@ -100,7 +156,6 @@ productosData.productos.forEach(p => {
     } else {
         p.colores = [];
     }
-    // Asegurar campos de oferta
     if (p.oferta === undefined) p.oferta = false;
     if (p.descuento === undefined) p.descuento = 0;
     if (p.rebaja === undefined) p.rebaja = 0;
@@ -109,6 +164,7 @@ productosData.productos.forEach(p => {
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
+    initEventos();        // Inicializar sistema de eventos
     cargarCategorias();
     cargarProductos();
     actualizarContadorCarrito();
@@ -133,15 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
     seguirComprando.addEventListener('click', () => cerrarModal(confirmacionModal));
     buscador.addEventListener('input', filtrarProductos);
     
-    // Mini notificación
     cerrarMini.addEventListener('click', ocultarMiniNotificacion);
-    
-    // Confirmación personalizada
     cerrarConfirmacionAccion.addEventListener('click', ocultarConfirmacion);
     cancelarConfirmacion.addEventListener('click', ocultarConfirmacion);
     okConfirmacion.addEventListener('click', ejecutarConfirmacion);
     
-    // Modal de revisión de datos
     cerrarRevisionBtn.addEventListener('click', () => {
         cerrarModal(revisionModal);
         enFlujoCompra = false;
@@ -153,7 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmarDatosBtn.addEventListener('click', () => {
         cerrarModal(revisionModal);
         enFlujoCompra = false;
-        // Llamar a la nueva función de envío
         generarYEnviarMensaje();
     });
     
@@ -229,7 +280,6 @@ function cargarCategorias() {
                 ordenActual = btn.dataset.orden;
             } else {
                 filtroCategoria = btn.dataset.categoria;
-                // Si se hace clic en TODOS, resetear el orden
                 if (filtroCategoria === 'todos') {
                     ordenActual = null;
                 }
@@ -253,10 +303,8 @@ function ordenarProductos(array) {
 function ordenAlfanumerico(a, b) {
     const nombreA = a.nombre.toLowerCase();
     const nombreB = b.nombre.toLowerCase();
-    
     const esNumeroA = /^\d/.test(nombreA);
     const esNumeroB = /^\d/.test(nombreB);
-    
     if (esNumeroA && !esNumeroB) return -1;
     if (!esNumeroA && esNumeroB) return 1;
     return nombreA.localeCompare(nombreB);
@@ -323,7 +371,9 @@ function renderizarProductos(array) {
         // Badges de oferta
         let badgesHTML = '';
         if (nuevo) badgesHTML += '<span class="badge badge-new">NEW</span>';
-        if (p.oferta) {
+        if (descuentoGlobalActivo > 0) {
+            badgesHTML += '<span class="badge badge-off">🔥 -' + descuentoGlobalActivo + '% DESCUENTO</span>';
+        } else if (p.oferta) {
             if (p.descuento > 0) {
                 badgesHTML += `<span class="badge badge-off">-${p.descuento}%</span>`;
             } else if (p.rebaja > 0) {
@@ -377,18 +427,24 @@ function renderizarProductos(array) {
             selectorHTML = `<input type="hidden" id="color-${nombreId}" value="${p.colores[0]}">`;
         }
         
-        // Calcular precio final con descuento o rebaja
+        // Calcular precio final con descuento global o individual
         let precioFinal = p.precio;
         let tieneDescuento = false;
         let descuentoTexto = '';
-        if (p.descuento > 0) {
-            precioFinal = p.precio * (1 - p.descuento / 100);
+        if (descuentoGlobalActivo > 0) {
+            precioFinal = p.precio * (1 - descuentoGlobalActivo / 100);
             tieneDescuento = true;
-            descuentoTexto = `-${p.descuento}%`;
-        } else if (p.rebaja > 0) {
-            precioFinal = p.precio - p.rebaja;
-            tieneDescuento = true;
-            descuentoTexto = `-$${p.rebaja}`;
+            descuentoTexto = `-${descuentoGlobalActivo}%`;
+        } else {
+            if (p.descuento > 0) {
+                precioFinal = p.precio * (1 - p.descuento / 100);
+                tieneDescuento = true;
+                descuentoTexto = `-${p.descuento}%`;
+            } else if (p.rebaja > 0) {
+                precioFinal = p.precio - p.rebaja;
+                tieneDescuento = true;
+                descuentoTexto = `-$${p.rebaja}`;
+            }
         }
         
         // Renderizar precio
@@ -487,12 +543,16 @@ function agregarProducto(nombre) {
         colorSeleccionado = producto.colores[0];
     }
     
-    // Calcular precio final
+    // Calcular precio final (con descuento global o individual)
     let precioFinal = producto.precio;
-    if (producto.descuento > 0) {
-        precioFinal = producto.precio * (1 - producto.descuento / 100);
-    } else if (producto.rebaja > 0) {
-        precioFinal = producto.precio - producto.rebaja;
+    if (descuentoGlobalActivo > 0) {
+        precioFinal = producto.precio * (1 - descuentoGlobalActivo / 100);
+    } else {
+        if (producto.descuento > 0) {
+            precioFinal = producto.precio * (1 - producto.descuento / 100);
+        } else if (producto.rebaja > 0) {
+            precioFinal = producto.precio - producto.rebaja;
+        }
     }
     
     const existente = carrito.find(item => item.nombre === nombre && item.color === colorSeleccionado);
@@ -796,7 +856,7 @@ function guardarRegistro(e) {
     
     localStorage.setItem('luxuriaUsuario', JSON.stringify(usuario));
     cerrarModal(registroModal);
-    generarYEnviarMensaje(); // Llamar a la nueva función
+    generarYEnviarMensaje();
 }
 
 // ===== NUEVA FUNCIÓN: GENERAR MENSAJE Y ENVIAR WHATSAPP =====
@@ -837,13 +897,10 @@ function generarYEnviarMensaje() {
     
     console.log("📨 Mensaje generado:\n", mensajeTexto);
     
-    // Intentar abrir WhatsApp con el mensaje (puede truncarse)
     const mensajeCodificado = encodeURIComponent(mensajeTexto);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`;
     
-    // Verificar longitud aproximada (2048 es límite seguro en la mayoría de navegadores)
     if (whatsappUrl.length > 2048) {
-        // Si es muy largo, copiar al portapapeles y abrir WhatsApp sin texto
         copiarTexto(mensajeTexto);
         mostrarNotificacion('Mensaje copiado al portapapeles. Pégalo en WhatsApp.');
         window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank');
@@ -851,7 +908,6 @@ function generarYEnviarMensaje() {
         window.open(whatsappUrl, '_blank');
     }
     
-    // Actualizar UI
     numeroPedido.textContent = `#${numPedido}`;
     totalConfirmacion.textContent = `Total: $${total.toFixed(2)}`;
     confirmacionModal.classList.add('active');
