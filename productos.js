@@ -13,7 +13,7 @@ const productosData = {
             color: "Morado",
             fechaAgregado: "2026-03-12",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -33,7 +33,7 @@ const productosData = {
             control: "Por App",
             fechaAgregado: "2026-03-12",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -51,7 +51,7 @@ const productosData = {
             vibración: "10 Formas de Vibración",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -70,7 +70,7 @@ const productosData = {
             control: "Por App",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -88,7 +88,7 @@ const productosData = {
             vibración: "10 Modos",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },        
@@ -106,7 +106,7 @@ const productosData = {
             vibración: "Ascendente",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },        
@@ -124,7 +124,7 @@ const productosData = {
             vibración: "10 Modos",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -137,7 +137,7 @@ const productosData = {
             talla: "Talla Única",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -156,7 +156,7 @@ const productosData = {
             empuje: "10 Modos",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -172,7 +172,7 @@ const productosData = {
             color: "Marrón Claro, Morado",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -190,7 +190,7 @@ const productosData = {
             control: "Por App",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -206,7 +206,7 @@ const productosData = {
             color: "Piel",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -222,7 +222,7 @@ const productosData = {
             color: "Piel",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -238,7 +238,7 @@ const productosData = {
             color: "Rosado, Blanco, Marrón Claro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -252,7 +252,7 @@ const productosData = {
             color: "Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -266,7 +266,7 @@ const productosData = {
             color: "Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -280,7 +280,7 @@ const productosData = {
             color: "Negro, Rojo",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -294,7 +294,7 @@ const productosData = {
             color: "Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -308,7 +308,7 @@ const productosData = {
             color: "Negro, Rojo",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -322,7 +322,7 @@ const productosData = {
             color: "Negro, Rojo",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -335,7 +335,7 @@ const productosData = {
             talla: "L",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -349,7 +349,7 @@ const productosData = {
             color: "Verde",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -362,7 +362,7 @@ const productosData = {
             talla: "L",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -378,7 +378,7 @@ const productosData = {
             color: "Rojo",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -394,7 +394,7 @@ const productosData = {
             color: "Transparente",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -410,7 +410,7 @@ const productosData = {
             color: "Rosado, Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -428,7 +428,7 @@ const productosData = {
             vibración: "10 Modos",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -446,7 +446,7 @@ const productosData = {
             vibración: "10 Frecuencias",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -464,7 +464,7 @@ const productosData = {
             vibración: "10 Frecuencias",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -482,7 +482,7 @@ const productosData = {
             vibración: "10 Frecuencias",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -500,7 +500,7 @@ const productosData = {
             vibración: "Estandar Ascendente",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -518,7 +518,7 @@ const productosData = {
             vibración: "20 Frecuencias",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -536,7 +536,7 @@ const productosData = {
             vibración: "Ascendente",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -552,7 +552,7 @@ const productosData = {
             color: "Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -570,7 +570,7 @@ const productosData = {
             vibración: "Estandar",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -588,7 +588,7 @@ const productosData = {
             vibración: "28 Frecuencias",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -606,7 +606,7 @@ const productosData = {
             vibración: "1 Frecuencia",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -625,7 +625,7 @@ const productosData = {
             control: "Mando a Distancia",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -640,7 +640,7 @@ const productosData = {
             color: "Morado",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -654,7 +654,7 @@ const productosData = {
             color: "Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -672,7 +672,7 @@ const productosData = {
             vibración: "20 Frecuencia",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -690,7 +690,7 @@ const productosData = {
             vibración: "10 Frecuencia",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -706,7 +706,7 @@ const productosData = {
             color: "Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -722,7 +722,7 @@ const productosData = {
             color: "Rosado",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -739,7 +739,7 @@ const productosData = {
             vibración: "Constante",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -755,7 +755,7 @@ const productosData = {
             color: "Blanco",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -771,7 +771,7 @@ const productosData = {
             color: "Morado",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -786,7 +786,7 @@ const productosData = {
             color: "Plateado",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -805,7 +805,7 @@ const productosData = {
             color: "Morado, Azul",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -824,7 +824,7 @@ const productosData = {
             color: "Morado, Azul",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -840,7 +840,7 @@ const productosData = {
             color: "Rosado, Rojo, Negro, Azul",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -855,7 +855,7 @@ const productosData = {
             potencia: "Intensificada",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -869,7 +869,7 @@ const productosData = {
             color: "Rojo, Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -885,7 +885,7 @@ const productosData = {
             color: "Rojo, Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -904,7 +904,7 @@ const productosData = {
             vibración: "12 Frecuencias",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -918,7 +918,7 @@ const productosData = {
             color: "Negro",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -932,7 +932,7 @@ const productosData = {
             contenido: "6.8 oz (200 ml)",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -950,7 +950,7 @@ const productosData = {
             color: "Negro, Morado, Rosado",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -966,7 +966,7 @@ const productosData = {
             color: "Azul, Morado, Rojo, Amarillo",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -984,7 +984,7 @@ const productosData = {
             vibración: "10 Modos",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
@@ -1001,7 +1001,7 @@ const productosData = {
             vibración: "No",
             fechaAgregado: "2026-03-10",
             oferta: false,
-            descuento: 0,
+            descuento: 10,
             rebaja: 0,
             etiquetaOferta: ""
         },
